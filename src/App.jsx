@@ -35,29 +35,35 @@ export default function Box(){
   if(winner){
     status = "Winner: " + winner;
   } else if(isDraw) {
-    status = "Draw! 🤝";
+    status = "Draw!";
   } else {
     status = "Play: " + (xIsNext ? "X" : "O");
   }
   
   return(
     <>
-    <div className="status">{status}</div>
-    <div className='box'>
-      <Btn value={btn[0]} onBtnClick={() => handleClick(0)}/>
-      <Btn value={btn[1]} onBtnClick={() => handleClick(1)}/>
-      <Btn value={btn[2]} onBtnClick={() => handleClick(2)}/>
-      <Btn value={btn[3]} onBtnClick={() => handleClick(3)}/>
-      <Btn value={btn[4]} onBtnClick={() => handleClick(4)}/>
-      <Btn value={btn[5]} onBtnClick={() => handleClick(5)}/>
-      <Btn value={btn[6]} onBtnClick={() => handleClick(6)}/>
-      <Btn value={btn[7]} onBtnClick={() => handleClick(7)}/>
-      <Btn value={btn[8]} onBtnClick={() => handleClick(8)}/>
-    </div>
-    <button onClick={() => setBtn(Array(9).fill(null))}>
-      Reset Game
-    </button>
+    <main>
+      <div className="status">{status}</div>
+      <div className='box'>
+        <Btn value={btn[0]} onBtnClick={() => handleClick(0)}/>
+        <Btn value={btn[1]} onBtnClick={() => handleClick(1)}/>
+        <Btn value={btn[2]} onBtnClick={() => handleClick(2)}/>
+        <Btn value={btn[3]} onBtnClick={() => handleClick(3)}/>
+        <Btn value={btn[4]} onBtnClick={() => handleClick(4)}/>
+        <Btn value={btn[5]} onBtnClick={() => handleClick(5)}/>
+        <Btn value={btn[6]} onBtnClick={() => handleClick(6)}/>
+        <Btn value={btn[7]} onBtnClick={() => handleClick(7)}/>
+        <Btn value={btn[8]} onBtnClick={() => handleClick(8)}/>
+      </div>
+      <button onClick={() => setBtn(Array(9).fill(null))}>
+        Reset Game
+      </button>
+    </main>
+    <footer>
+    <p>Created using React, Contribute in my Github repo <a href="https://github.com/Wira-Kusuma/tic-tac-tue" target='_blank'>here</a></p>
+  </footer>
     </>
+    
   )
 }
 
