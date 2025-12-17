@@ -16,7 +16,6 @@ export default function Box(){
     if(btn[i] || calcWinner(btn)) return;
     const nextBtn = btn.slice();
     // if btn already filled, can't fill it again
-    if (btn[i]) return;
     // using if else 
     // if(xIsNext) {
     //   nextBtn[i] = "X"
@@ -29,12 +28,16 @@ export default function Box(){
     setXIsNext(!xIsNext)
   }
 
-  const winner = calcWinner(btn)
+  const winner = calcWinner(btn);
+  const isDraw = !winner && btn.every(square => square !== null);
+
   let status = "";
   if(winner){
-    status = "winner : " + winner
+    status = "Winner: " + winner;
+  } else if(isDraw) {
+    status = "Draw! 🤝";
   } else {
-    status = "Play : " + (xIsNext ? "X" : "O")
+    status = "Play: " + (xIsNext ? "X" : "O");
   }
   
   return(
@@ -51,6 +54,9 @@ export default function Box(){
       <Btn value={btn[7]} onBtnClick={() => handleClick(7)}/>
       <Btn value={btn[8]} onBtnClick={() => handleClick(8)}/>
     </div>
+    <button onClick={() => setBtn(Array(9).fill(null))}>
+      Reset Game
+    </button>
     </>
   )
 }
@@ -63,9 +69,8 @@ function calcWinner(btn) {
     [0,3,6],
     [1,4,7],
     [2,5,8],
-    [2,4,8],
     [0,4,8],
-    [2,4,6]
+    [2,4,6],
   ]
 
   for (let i = 0; i < lines.length; i++) {
@@ -75,7 +80,7 @@ function calcWinner(btn) {
     // alternative 
     const [a,b,c] = lines[i];
     // ["X", "X", "X", "O", "O", null, null, null, null]
-    if(btn[a] && btn[a] === btn[b] && btn[c]) {
+    if(btn[a] && btn[a] === btn[b] && btn[a] === btn[c]) {
       return btn[a]
     } 
   }
