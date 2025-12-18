@@ -99,10 +99,6 @@ This project helps you understand and practice the following React concepts:
 ```
 tic-tac-tue/
 ├── src/
-│   ├── components/
-│   │   ├── Board.jsx
-│   │   ├── Square.jsx
-│   │   └── Game.jsx
 │   ├── App.jsx
 │   ├── App.css
 │   ├── index.js
